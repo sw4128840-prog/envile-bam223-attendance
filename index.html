@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENVILE POLYTECHNIC | BAM223 Attendance</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand"><img src="envile-logo.jpeg" alt="ENVILE POLYTECHNIC logo"><div><b>ENVILE POLYTECHNIC</b><small>BAM223 ATTENDANCE</small></div></div>
+  <button class="logout" onclick="location.reload()">Reset</button>
+</header>
+<main>
+<section id="login" class="card auth">
+  <h1>BAM223 Attendance</h1>
+  <p>Online attendance portal</p>
+  <input id="matric" placeholder="Matric Number e.g. P24/ND43003">
+  <button onclick="studentLogin()">Student Login</button>
+  <hr>
+  <h3>Admin / Lecturer</h3>
+  <input id="adminUser" placeholder="Username">
+  <input id="adminPass" type="password" placeholder="Password">
+  <button onclick="adminLogin()">Admin Login</button>
+  <small>Demo admin: admin / admin123</small>
+  <p id="message" class="message"></p>
+</section>
+
+<section id="student" class="hidden">
+  <div class="title"><div><h1 id="welcome"></h1><p id="studentInfo"></p></div><span>BAM223</span></div>
+  <div class="stats">
+    <div class="card"><small>Present</small><strong id="present">0</strong></div>
+    <div class="card"><small>Rate</small><strong id="rate">0%</strong></div>
+    <div class="card"><small>Class Size</small><strong id="size">20</strong></div>
+  </div>
+  <div class="card">
+    <h2>Today's Attendance</h2>
+    <p id="date"></p>
+    <div id="status" class="status">Not marked</div>
+    <button id="mark" onclick="markAttendance()">MARK ATTENDANCE</button>
+    <small>Monday–Friday only. Online records are stored in Firebase Firestore.</small>
+  </div>
+  <div class="card"><h2>My Attendance History</h2><div id="history"></div></div>
+</section>
+
+<section id="admin" class="hidden">
+  <div class="title"><div><h1>Admin Dashboard</h1><p>Live BAM223 attendance</p></div><span>ADMIN</span></div>
+  <div class="stats">
+    <div class="card"><small>Students</small><strong>20</strong></div>
+    <div class="card"><small>Present Today</small><strong id="apresent">0</strong></div>
+    <div class="card"><small>Rate</small><strong id="arate">0%</strong></div>
+  </div>
+  <div class="card">
+    <h2>Today's Attendance</h2>
+    <input id="search" placeholder="Search name or matric number" oninput="renderAdmin()">
+    <table><thead><tr><th>S/N</th><th>Student</th><th>Matric</th><th>Status</th><th>Time</th></tr></thead><tbody id="table"></tbody></table>
+  </div>
+</section>
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
